@@ -39,14 +39,14 @@ class PriorityQueue extends Queue{
  constructor(){
    super();
  }
- priorityEnqueue(ele, order = "desc"){
+ priorityEnqueue(ele){
    if(this.isEmpty()){
      this.queue.push(ele);
    }else{
      //console.log(ele)
      let added = false;
      for(let i = 0; i < this.queue.length; i++){
-       if(order === "asc" ? ele[1] > this.queue[i][1] : ele[1] < this.queue[i][1]){
+       if(ele[1] < this.queue[i][1]){
          this.queue.splice(i,0,ele);
          added = true;
          break;
@@ -66,6 +66,6 @@ obj.priorityEnqueue([10,1]);
 obj.priorityEnqueue([20,3]);
 obj.priorityEnqueue([30,2]);
 obj.priorityEnqueue([40,6]);
-obj.priorityEnqueue([50,4]);
+obj.priorityEnqueue([50,4], "asc");
 console.log(obj.print())
 
